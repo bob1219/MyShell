@@ -8,7 +8,7 @@
 // using
 using namespace std;
 
-void command_line()
+void myshell::command_line()
 {
 	string command;
 	while(true)
