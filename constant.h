@@ -17,7 +17,13 @@ namespace myshell
 	{
 		namespace
 		{
-			const int SUCCESS = 0;
+			const int SUCCESS		= 0;
+			const int SCRIPT_FAILURE	= 1;
+			const int MANY_ARGS		= 2;
+			const int STD_EXCEPTION		= -1;
+			const int BOOST_EXCEPTION	= -2;
+			const int MYSHELL_EXCEPTION	= -3;
+			const int EXCEPTION		= -4;
 		}
 	}
 }
