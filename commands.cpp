@@ -65,14 +65,6 @@ bool myshell::command::lfile(const string& dir_name)
 	return true;
 }
 
-bool myshell::command::rmdir(const string& dir_name)
-{
-	path dir(dir_name);
-	if(!is_directory(dir))
-		return false;
-	return remove(dir);
-}
-
 bool myshell::command::pcwd()
 {
 	path cwd = current_path();
