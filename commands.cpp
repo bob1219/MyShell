@@ -37,10 +37,7 @@ bool myshell::command::mk(const string& filename)
 
 bool myshell::command::rm(const string& filename)
 {
-	if(remove(filename.c_str()) == 0)
-		return true;
-	else
-		return false;
+	return std::remove(filename.c_str()) == 0;
 }
 
 bool myshell::command::copy(const string& from_filename, const string& to_filename)
@@ -65,12 +62,7 @@ bool myshell::command::lfile(const string& dir_name)
 {
 	path dir(dir_name);
 	BOOST_FOREACH(const path& p, make_pair(directory_iterator(dir), directory_iterator()))
-	{
-		if(is_directory(p))
-			cout << "dir:\t" << p.string() << '\n';
-		else
-			cout << "file:\t" << p.string() << '\n';
-	}
+		cout << (is_directory(p) ? "dir" : "file") << ":\t" << p.string();
 
 	return true;
 }
