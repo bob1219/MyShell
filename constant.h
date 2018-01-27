@@ -3,12 +3,14 @@
 
 // Standard Library
 #include <string>
+#include <cstddef>
 
 namespace myshell
 {
 	namespace
 	{
-		const std::string VERSION = "1.0";
+		const std::string VERSION	= "1.0";
+		const std::size_t FILE_SIZE_MAX	= 102400;
 	}
 }
 
