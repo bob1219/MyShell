@@ -80,7 +80,7 @@ namespace myshell
 
 		inline bool myshell::command::version()
 		{
-			std::cerr << "MyShell version " << myshell::VERSION << '\n';
+			std::cerr << "MyShell version " << VERSION << '\n';
 			return true;
 		}
 	}
