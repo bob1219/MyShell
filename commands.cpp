@@ -65,11 +65,6 @@ bool myshell::command::lfile(const string& dir_name)
 	return true;
 }
 
-bool myshell::command::rename(const string& from_name, const string& to_name)
-{
-	return std::rename(from_name.c_str(), to_name.c_str()) == 0;
-}
-
 bool myshell::command::tview(const string& filename)
 {
 	ifstream ifs(filename);

@@ -27,7 +27,6 @@ namespace myshell
 		bool mk(const std::string& filename);
 		bool copy(const std::string& from_filename, const std::string& to_filename);
 		bool lfile(const std::string& dir_name);
-		bool rename(const std::string& from_name, const std::string& to_name);
 		bool tview(const std::string& filename);
 		bool bview(const std::string& filename);
 		bool version();
@@ -71,6 +70,12 @@ namespace myshell
 			boost::filesystem::path dir(dir_name);
 			boost::filesystem::current_path(dir);
 			return true;
+		}
+
+
+		bool myshell::command::rename(const std::string& from_name, const std::string& to_name)
+		{
+			return std::rename(from_name.c_str(), to_name.c_str()) == 0;
 		}
 	}
 }
