@@ -33,7 +33,7 @@ bool myshell::command_process(const string& command)
 
 		return command::rm(filename);
 	}
-	else if(regex_match(command, regex("copy \\S+ .+"))) // Copy file
+	else if(regex_match(command, regex("copy \\S+ \\S+"))) // Copy file
 	{
 		istringstream iss(command);
 		iss.ignore(5);
