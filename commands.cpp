@@ -59,7 +59,7 @@ bool myshell::command::lfile(const string& dir_name)
 {
 	path dir(dir_name);
 	BOOST_FOREACH(const path& p, make_pair(directory_iterator(dir), directory_iterator()))
-		cout << (is_directory(p) ? "dir" : "file") << ":\t" << p.string();
+		cout << (is_directory(p) ? "dir" : "file") << ":\t" << p.string() << '\n';
 
 	return true;
 }
