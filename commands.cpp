@@ -6,7 +6,6 @@
 #include <cctype>
 #include <cstddef>
 #include <cstdlib>
-#include <ctime>
 
 // Boost
 #include <boost/filesystem.hpp>
@@ -34,7 +33,7 @@ bool myshell::command::mk(const string& filename)
 			return false;
 	}
 
-	ofstream ofs(filename);
+	std::ofstream ofs(filename);
 	return !ofs.fail();
 }
 
@@ -67,7 +66,7 @@ bool myshell::command::lfile(const string& dir_name)
 
 bool myshell::command::tview(const string& filename)
 {
-	ifstream ifs(filename);
+	std::ifstream ifs(filename);
 	if(ifs.fail())
 		return false;
 
@@ -80,7 +79,7 @@ bool myshell::command::tview(const string& filename)
 
 bool myshell::command::bview(const string& filename)
 {
-	ifstream ifs(filename);
+	std::ifstream ifs(filename);
 	if(ifs.fail())
 		return false;
 

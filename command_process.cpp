@@ -139,6 +139,6 @@ bool myshell::command_process(const string& command)
 		return script(filename);
 	}
 	else if(command == "exit")
-		exit(ExitCode::SUCCESS);
+		exit(exit_code::SUCCESS);
 	else return false;
 }

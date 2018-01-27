@@ -15,7 +15,6 @@
 // using
 using namespace myshell;
 using namespace std;
-using namespace boost::system;
 
 int main(int argc, char** argv)
 {
@@ -53,18 +52,18 @@ int main(int argc, char** argv)
 			return exit_code::MANY_ARGS;
 		}
 	}
-	catch(std::exception& e)
-	{
-		cerr << "standard c++ library exception was occured.\n";
-		cerr << "error message: " << e.what() << '\n';
-		return exit_code::STD_EXCEPTION;
-	}
-	catch(system_error& e)
+	catch(boost::system::system_error& e)
 	{
 		cerr << "boost exception was occured.\n";
 		cerr << "error code:\t" << e.code().value() << '\n';
 		cerr << "error message:\t" << e.what() << '\n';
 		return exit_code::BOOST_EXCEPTION;
+	}
+	catch(std::exception& e)
+	{
+		cerr << "standard c++ library exception was occured.\n";
+		cerr << "error message: " << e.what() << '\n';
+		return exit_code::STD_EXCEPTION;
 	}
 	catch(...)
 	{

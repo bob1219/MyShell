@@ -13,7 +13,7 @@ namespace myshell
 		const std::size_t FILE_SIZE_MAX	= 102400;
 	}
 
-	namespace ExitCode
+	namespace exit_code
 	{
 		namespace
 		{
