@@ -32,10 +32,7 @@ bool myshell::command::mk(const string& filename)
 	}
 
 	ofstream ofs(filename);
-	if(ofs.fail())
-		return false;
-	else
-		return true;
+	return !ofs.fail();
 }
 
 bool myshell::command::rm(const string& filename)
@@ -81,10 +78,7 @@ bool myshell::command::lfile(const string& dir_name)
 bool myshell::command::mkdir(const string& dir_name)
 {
 	path dir(dir_name);
-	if(create_directory(dir))
-		return true;
-	else
-		return false;
+	return create_directory(dir);
 }
 
 bool myshell::command::rmdir(const string& dir_name)
