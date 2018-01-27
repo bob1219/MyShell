@@ -27,7 +27,6 @@ namespace myshell
 		bool mk(const std::string& filename);
 		bool copy(const std::string& from_filename, const std::string& to_filename);
 		bool lfile(const std::string& dir_name);
-		bool pcwd();
 		bool chcwd(const std::string& dir_name);
 		bool rename(const std::string& from_name, const std::string& to_name);
 		bool tview(const std::string& filename);
@@ -57,6 +56,14 @@ namespace myshell
 			if(!boost::filesystem::is_directory(dir))
 				return false;
 			return std::remove(dir);
+		}
+
+
+		inline bool myshell::command::pcwd()
+		{
+			boost::filesystem::path cwd = boost::filesystem::current_path();
+			std::cout << cwd.string() << '\n';
+			return true;
 		}
 	}
 }

@@ -65,13 +65,6 @@ bool myshell::command::lfile(const string& dir_name)
 	return true;
 }
 
-bool myshell::command::pcwd()
-{
-	path cwd = current_path();
-	cout << cwd.string() << '\n';
-	return true;
-}
-
 bool myshell::command::chcwd(const string& dir_name)
 {
 	path dir(dir_name);
