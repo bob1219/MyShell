@@ -95,3 +95,10 @@ bool myshell::command::pcwd()
 	cout << cwd.string() << '\n';
 	return true;
 }
+
+bool myshell::command::chcwd(const string& dir_name)
+{
+	path dir(dir_name);
+	current_path(dir);
+	return true;
+}
