@@ -88,3 +88,10 @@ bool myshell::command::rmdir(const string& dir_name)
 		return false;
 	return remove(dir);
 }
+
+bool myshell::command::pcwd()
+{
+	path cwd = current_path();
+	cout << cwd.string() << '\n';
+	return true;
+}
