@@ -112,17 +112,3 @@ bool myshell::command::app(const string& app_name)
 
 	return true;
 }
-
-bool myshell::command::now()
-{
-	time_t timer = time(nullptr);
-	cout << ctime(&timer) << '\n';
-	return true;
-}
-
-bool myshell::command::pause()
-{
-	cout << "Press ENTER key to continue...";
-	getchar();
-	return true;
-}

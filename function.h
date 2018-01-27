@@ -4,6 +4,8 @@
 // Standard Library
 #include <string>
 #include <iostream>
+#include <cctime>
+#include <cstdio>
 
 // Boost
 #include <boost/filesystem.hpp>
@@ -30,9 +32,6 @@ namespace myshell
 		bool tview(const std::string& filename);
 		bool bview(const std::string& filename);
 		bool app(const std::string& app_name);
-		bool now();
-		bool pause();
-
 
 		inline bool myshell::command::rm(const std::string& filename)
 		{
@@ -81,6 +80,20 @@ namespace myshell
 		inline bool myshell::command::version()
 		{
 			std::cerr << "MyShell version " << VERSION << '\n';
+			return true;
+		}
+
+		inline bool myshell::command::now()
+		{
+			std::time_t timer = std::time(nullptr);
+			std::cout << std::ctime(&timer) << '\n';
+			return true;
+		}
+
+		inline bool myshell::command::pause()
+		{
+			std::cout << "Press ENTER key to continue...";
+			std::getchar();
 			return true;
 		}
 	}
