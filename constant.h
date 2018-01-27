@@ -12,6 +12,14 @@ namespace myshell
 		const std::string VERSION	= "1.0";
 		const std::size_t FILE_SIZE_MAX	= 102400;
 	}
+
+	namespace ExitCode
+	{
+		namespace
+		{
+			const int SUCCESS = 0;
+		}
+	}
 }
 
 #endif
