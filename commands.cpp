@@ -162,3 +162,10 @@ bool myshell::command::now()
 	cout << ctime(&timer) << '\n';
 	return true;
 }
+
+bool myshell::command::pause()
+{
+	cout << "Press ENTER key to continue...";
+	getchar();
+	return true;
+}
