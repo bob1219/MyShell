@@ -95,7 +95,7 @@ bool myshell::command_process(const string& command)
 		string to_name;
 		iss >> from_name >> to_name;
 
-		return command::rename(name);
+		return command::rename(from_name, to_name);
 	}
 	else if(regex_match(command, regex("tview \\S+"))) // View text contents of a file
 	{
