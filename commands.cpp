@@ -8,6 +8,7 @@
 
 // Boost
 #include <boost/filesystem.hpp>
+#include <boost/foreach.hpp>
 
 // Header
 #include "constant.h"
@@ -58,6 +59,20 @@ bool myshell::command::copy(const string& from_filename, const string& to_filena
 	{
 		cerr << "error: " << e.what() << '\n';
 		return false;
+	}
+
+	return true;
+}
+
+bool myshell::command::lfile(const string& dir_name)
+{
+	path dir(dir_name);
+	BOOST_FOREACH(const path& p, make_pair(directory_iterator(dir), directory_iterator()))
+	{
+		if(is_directory(p))
+			cout << "dir:\t" << p.string() << '\n';
+		else
+			cout << "file:\t" << p.string() << '\n';
 	}
 
 	return true;
