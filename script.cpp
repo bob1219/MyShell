@@ -3,6 +3,9 @@
 #include <iostream>
 #include <fstream>
 
+// Header
+#include "function.h"
+
 // using
 using namespace std;
 

@@ -4,7 +4,7 @@
 // Standard Library
 #include <string>
 #include <iostream>
-#include <cctime>
+#include <ctime>
 #include <cstdio>
 
 // Boost
@@ -33,29 +33,29 @@ namespace myshell
 		bool bview(const std::string& filename);
 		bool app(const std::string& app_name);
 
-		inline bool myshell::command::rm(const std::string& filename)
+		inline bool rm(const std::string& filename)
 		{
 			return std::remove(filename.c_str()) == 0;
 		}
 
 
-		inline bool myshell::command::mkdir(const std::string& dir_name)
+		inline bool mkdir(const std::string& dir_name)
 		{
 			boost::filesystem::path dir(dir_name);
 			return boost::filesystem::create_directory(dir);
 		}
 
 
-		inline bool myshell::command::rmdir(const std::string& dir_name)
+		inline bool rmdir(const std::string& dir_name)
 		{
 			boost::filesystem::path dir(dir_name);
 			if(!boost::filesystem::is_directory(dir))
 				return false;
-			return std::remove(dir);
+			return boost::filesystem::remove(dir_name.c_str());
 		}
 
 
-		inline bool myshell::command::pcwd()
+		inline bool pcwd()
 		{
 			boost::filesystem::path cwd = boost::filesystem::current_path();
 			std::cout << cwd.string() << '\n';
@@ -63,7 +63,7 @@ namespace myshell
 		}
 
 
-		inline bool myshell::command::chcwd(const std::string& dir_name)
+		inline bool chcwd(const std::string& dir_name)
 		{
 			boost::filesystem::path dir(dir_name);
 			boost::filesystem::current_path(dir);
@@ -71,26 +71,26 @@ namespace myshell
 		}
 
 
-		inline bool myshell::command::rename(const std::string& from_name, const std::string& to_name)
+		inline bool rename(const std::string& from_name, const std::string& to_name)
 		{
 			return std::rename(from_name.c_str(), to_name.c_str()) == 0;
 		}
 
 
-		inline bool myshell::command::version()
+		inline bool version()
 		{
 			std::cerr << "MyShell version " << VERSION << '\n';
 			return true;
 		}
 
-		inline bool myshell::command::now()
+		inline bool now()
 		{
 			std::time_t timer = std::time(nullptr);
 			std::cout << std::ctime(&timer) << '\n';
 			return true;
 		}
 
-		inline bool myshell::command::pause()
+		inline bool pause()
 		{
 			std::cout << "Press ENTER key to continue...";
 			std::getchar();
