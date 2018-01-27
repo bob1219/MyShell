@@ -29,7 +29,6 @@ namespace myshell
 		bool lfile(const std::string& dir_name);
 		bool tview(const std::string& filename);
 		bool bview(const std::string& filename);
-		bool version();
 		bool app(const std::string& app_name);
 		bool now();
 		bool pause();
@@ -76,6 +75,13 @@ namespace myshell
 		inline bool myshell::command::rename(const std::string& from_name, const std::string& to_name)
 		{
 			return std::rename(from_name.c_str(), to_name.c_str()) == 0;
+		}
+
+
+		inline bool myshell::command::version()
+		{
+			std::cerr << "MyShell version " << myshell::VERSION << '\n';
+			return true;
 		}
 	}
 }
