@@ -110,7 +110,7 @@ bool myshell::command::app(const string& app_name)
 		return false;
 
 	int ret = system(app_name.c_str());
-	cout << "Return value: " << ret << '\n';
+	cout << "return value: " << ret << '\n';
 
 	return true;
 }
