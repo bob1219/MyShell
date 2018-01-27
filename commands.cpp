@@ -65,12 +65,6 @@ bool myshell::command::lfile(const string& dir_name)
 	return true;
 }
 
-bool myshell::command::mkdir(const string& dir_name)
-{
-	path dir(dir_name);
-	return create_directory(dir);
-}
-
 bool myshell::command::rmdir(const string& dir_name)
 {
 	path dir(dir_name);

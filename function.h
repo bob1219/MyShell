@@ -5,6 +5,9 @@
 #include <string>
 #include <iostream>
 
+// Boost
+#include <boost/filesystem.hpp>
+
 // Header
 #include "constant.h"
 
@@ -24,7 +27,6 @@ namespace myshell
 		bool mk(const std::string& filename);
 		bool copy(const std::string& from_filename, const std::string& to_filename);
 		bool lfile(const std::string& dir_name);
-		bool mkdir(const std::string& dir_name);
 		bool rmdir(const std::string& dir_name);
 		bool pcwd();
 		bool chcwd(const std::string& dir_name);
@@ -40,6 +42,13 @@ namespace myshell
 		inline bool myshell::command::rm(const std::string& filename)
 		{
 			return std::remove(filename.c_str()) == 0;
+		}
+
+
+		inline bool myshell::command::mkdir(const std::string& dir_name)
+		{
+			boost::filesystem::path dir(dir_name);
+			return boost::filesystem::create_directory(dir);
 		}
 	}
 }
