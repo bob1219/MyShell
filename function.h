@@ -51,7 +51,7 @@ namespace myshell
 			boost::filesystem::path dir(dir_name);
 			if(!boost::filesystem::is_directory(dir))
 				return false;
-			return std::remove(dir_name.c_str());
+			return boost::filesystem::remove(dir_name.c_str());
 		}
 
 
