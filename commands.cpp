@@ -6,6 +6,7 @@
 #include <cctype>
 #include <cstddef>
 #include <cstdlib>
+#include <ctime>
 
 // Boost
 #include <boost/filesystem.hpp>
@@ -152,5 +153,12 @@ bool myshell::command::app(const string& app_name)
 	int ret = system(app_name.c_str());
 	cout << "Return value: " << ret << '\n';
 
+	return true;
+}
+
+bool myshell::command::now()
+{
+	time_t timer = time(nullptr);
+	cout << ctime(&timer) << '\n';
 	return true;
 }

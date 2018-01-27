@@ -124,10 +124,8 @@ bool myshell::command_process(const string& command)
 		string app_name = command.substr(4);
 		return command::app(app_name);
 	}
-	else if(command == "date") // Print current date
-		return command::date();
-	else if(command == "time") // Print current time
-		return command::time();
+	else if(command == "now")
+		return command::now();
 	else if(command == "pause") // Pause
 		return command::pause();
 	else if(regex_match(command, regex("script \\S+"))) // Execution a script

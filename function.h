@@ -34,8 +34,7 @@ namespace myshell
 		bool bview(const std::string& filename);
 		bool version();
 		bool app(const std::string& app_name);
-		bool date();
-		bool time();
+		bool now();
 		bool pause();
 	}
 }
