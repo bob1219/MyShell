@@ -86,13 +86,14 @@ bool myshell::command_process(const string& command)
 
 		return command::chcwd(dir_name);
 	}
-	else if(regex_match(command, regex("rename \\S+"))) // Rename a directory or a file
+	else if(regex_match(command, regex("rename \\S+ \\S+"))) // Rename a directory or a file
 	{
 		istringstream iss(command);
 		iss.ignore(7);
 
-		string name;
-		iss >> name;
+		string from_name;
+		string to_name;
+		iss >> from_name >> to_name;
 
 		return command::rename(name);
 	}
