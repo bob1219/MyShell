@@ -99,3 +99,16 @@ bool myshell::command::rename(const string& from_name, const string& to_name)
 {
 	return std::rename(from_name.c_str(), to_name.c_str()) == 0;
 }
+
+bool myshell::command::tview(const string& filename)
+{
+	ifstream ifs(filename);
+	if(ifs.fail())
+		return false;
+
+	string line;
+	for(unsigned int i = 1 ; getline(ifs, line) ; i++)
+		cout << i << ":\t" << line << '\n';
+
+	return true;
+}
