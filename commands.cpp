@@ -86,3 +86,11 @@ bool myshell::command::mkdir(const string& dir_name)
 	else
 		return false;
 }
+
+bool myshell::command::rmdir(const string& dir_name)
+{
+	path dir(dir_name);
+	if(!is_directory(dir))
+		return false;
+	return remove(dir);
+}
