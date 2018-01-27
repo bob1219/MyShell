@@ -5,6 +5,7 @@
 #include <cstdio>
 #include <cctype>
 #include <cstddef>
+#include <cstdlib>
 
 // Boost
 #include <boost/filesystem.hpp>
@@ -140,5 +141,16 @@ bool myshell::command::bview(const string& filename)
 bool myshell::command::version()
 {
 	cerr << "MyShell version " << VERSION << '\n';
+	return true;
+}
+
+bool myshell::command::app(const string& app_name)
+{
+	if(!system(nullptr))
+		return false;
+
+	int ret = system(app_name.c_str());
+	cout << "Return value: " << ret << '\n';
+
 	return true;
 }
