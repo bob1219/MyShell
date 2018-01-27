@@ -22,8 +22,7 @@ namespace myshell
 			const int MANY_ARGS		= 2;
 			const int STD_EXCEPTION		= -1;
 			const int BOOST_EXCEPTION	= -2;
-			const int MYSHELL_EXCEPTION	= -3;
-			const int EXCEPTION		= -4;
+			const int EXCEPTION		= -3;
 		}
 	}
 }

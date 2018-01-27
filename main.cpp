@@ -11,7 +11,6 @@
 // Header
 #include "function.h"
 #include "constant.h"
-#include "class.h"
 
 // using
 using namespace myshell;
@@ -66,12 +65,6 @@ int main(int argc, char** argv)
 		cerr << "error code:\t" << e.code().value() << '\n';
 		cerr << "error message:\t" << e.what() << '\n';
 		return exit_code::BOOST_EXCEPTION;
-	}
-	catch(myshell& e)
-	{
-		cerr << "MyShell exception has occured.\n";
-		cerr << "error message: " << e.getmess() << '\n';
-		return exit_code::MYSHELL_EXCEPTION;
 	}
 	catch(...)
 	{
