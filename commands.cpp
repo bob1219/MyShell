@@ -112,3 +112,27 @@ bool myshell::command::tview(const string& filename)
 
 	return true;
 }
+
+bool myshell::command::bview(const string& filename)
+{
+	ifstream ifs(filename);
+	if(ifs.fail())
+		return false;
+
+	char buffer[FILE_SIZE_MAX];
+	size_t buf_count = ifs.read(buffer, (sizeof(buffer) / sizeof(char))).gcount();
+
+	cout << "\t+0 +1 +2 +3 +4 +5 +6 +7 +8 +9 +A +B +C +D +E +F 0123456789ABCDEF\n";
+	for(unsigned int i = 0 ; i < buf_count ; i += 0x10)
+	{
+		for(unsigned int j = 0 ; j <= 0xf ; j++)
+			printf("%X ", static_cast<unsigned char>(buffer[i + j]));
+
+		for(unsigned int k = 0 ; k <= 0xf ; k++)
+			cout << (isprint(static_cast<int>(buffer[i + k])) ? buffer[i + k] : '.');
+
+		cout << '\n';
+	}
+
+	return true;
+}
