@@ -136,3 +136,9 @@ bool myshell::command::bview(const string& filename)
 
 	return true;
 }
+
+bool myshell::command::version()
+{
+	cerr << "MyShell version " << VERSION << '\n';
+	return true;
+}
