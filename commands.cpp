@@ -4,9 +4,13 @@
 #include <fstream>
 #include <cstdio>
 #include <cctype>
+#include <cstddef>
 
 // Boost
 #include <boost/filesystem.hpp>
+
+// Header
+#include "constant.h"
 
 // using
 using namespace std;
@@ -39,4 +43,22 @@ bool myshell::command::rm(const string& filename)
 		return true;
 	else
 		return false;
+}
+
+bool myshell::command::copy(const string& from_filename, const string& to_filename)
+{
+	path from_file(from_filename);
+	path to_file(to_filename);
+
+	try
+	{
+		copy_file(from_file, to_file, copy_option::overwrite_if_exists);
+	}
+	catch(filesystem_error& e)
+	{
+		cerr << "error: " << e.what() << '\n';
+		return false;
+	}
+
+	return true;
 }
