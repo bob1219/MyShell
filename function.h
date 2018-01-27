@@ -73,7 +73,7 @@ namespace myshell
 		}
 
 
-		bool myshell::command::rename(const std::string& from_name, const std::string& to_name)
+		inline bool myshell::command::rename(const std::string& from_name, const std::string& to_name)
 		{
 			return std::rename(from_name.c_str(), to_name.c_str()) == 0;
 		}
