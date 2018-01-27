@@ -22,7 +22,7 @@ int main(int argc, char** argv)
 	{
 		vector<string> args;
 		for(unsigned int i = 0 ; i < argc ; i++)
-			args[i] = argv[i];
+			args.push_back(argv[i]);
 
 		if(argc == 1)
 		{
