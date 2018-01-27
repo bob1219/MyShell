@@ -38,11 +38,6 @@ bool myshell::command::mk(const string& filename)
 	return !ofs.fail();
 }
 
-bool myshell::command::rm(const string& filename)
-{
-	return std::remove(filename.c_str()) == 0;
-}
-
 bool myshell::command::copy(const string& from_filename, const string& to_filename)
 {
 	path from_file(from_filename);

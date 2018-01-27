@@ -22,7 +22,6 @@ namespace myshell
 	namespace command
 	{
 		bool mk(const std::string& filename);
-		bool rm(const std::string& filename);
 		bool copy(const std::string& from_filename, const std::string& to_filename);
 		bool lfile(const std::string& dir_name);
 		bool mkdir(const std::string& dir_name);
@@ -36,6 +35,12 @@ namespace myshell
 		bool app(const std::string& app_name);
 		bool now();
 		bool pause();
+
+
+		inline bool myshell::command::rm(const std::string& filename)
+		{
+			return std::remove(filename.c_str()) == 0;
+		}
 	}
 }
 
