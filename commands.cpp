@@ -6,6 +6,7 @@
 #include <cctype>
 #include <cstddef>
 #include <cstdlib>
+#include <iomanip>
 
 // Boost
 #include <boost/filesystem.hpp>
@@ -89,8 +90,10 @@ bool myshell::command::bview(const string& filename)
 	cout << "\t+0 +1 +2 +3 +4 +5 +6 +7 +8 +9 +A +B +C +D +E +F 0123456789ABCDEF\n";
 	for(unsigned int i = 0 ; i < buf_count ; i += 0x10)
 	{
+		cout << hex << i << dec << ":\t";
+
 		for(unsigned int j = 0 ; j <= 0xf ; j++)
-			printf("%X ", static_cast<unsigned char>(buffer[i + j]));
+			printf("%02X ", static_cast<unsigned char>(buffer[i + j]));
 
 		for(unsigned int k = 0 ; k <= 0xf ; k++)
 			cout << (isprint(static_cast<int>(buffer[i + k])) ? buffer[i + k] : '.');
