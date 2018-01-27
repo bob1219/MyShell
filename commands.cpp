@@ -32,3 +32,11 @@ bool myshell::command::mk(const string& filename)
 	else
 		return true;
 }
+
+bool myshell::command::rm(const string& filename)
+{
+	if(remove(filename.c_str()) == 0)
+		return true;
+	else
+		return false;
+}
