@@ -14,7 +14,7 @@ void myshell::command_line()
 	while(true)
 	{
 		wcout << L'>';
-		getline(cin, command);
+		getline(wcin, command);
 
 		if(command_process(command))
 			wcout << L"succeeded.\n";

@@ -93,21 +93,21 @@ bool myshell::command::bview(const wstring& filename)
 	if(ifs.fail())
 		return false;
 
-	char buffer[FILE_SIZE_MAX];
-	size_t buf_count = ifs.read(buffer, (sizeof(buffer) / sizeof(char))).gcount();
+	wchar_t buffer[FILE_SIZE_MAX];
+	size_t buf_count = ifs.read(buffer, (sizeof(buffer) / sizeof(wchar_t))).gcount();
 
 	wcout << L"\t+0 +1 +2 +3 +4 +5 +6 +7 +8 +9 +A +B +C +D +E +F 0123456789ABCDEF\n";
 	for(unsigned int i = 0 ; i < buf_count ; i += 0x10)
 	{
-		cout << hex << i << dec << ":\t";
+		wcout << hex << i << dec << L":\t";
 
 		for(unsigned int j = 0 ; j <= 0xf ; j++)
-			wprintf(L"%02X ", static_cast<unsigned char>(buffer[i + j]));
+			wprintf(L"%02X ", buffer[i + j]);
 
 		for(unsigned int k = 0 ; k <= 0xf ; k++)
-			wcout << isprint(static_cast<int>(buffer[i + k])) ? buffer[i + k] : L'.';
+			wcout << iswprint(static_cast<wint_t>(buffer[i + k])) ? buffer[i + k] : L'.';
 
-		cout << '\n';
+		wcout << L'\n';
 	}
 
 	return true;
@@ -144,7 +144,7 @@ bool myshell::command::rm(const wstring& filename)
 	return true;
 }
 
-inline bool rename(const std::wstring& from_name, const std::wstring& to_name)
+bool myshell::command::rename(const std::wstring& from_name, const std::wstring& to_name)
 {
 	path from(from_name);
 	path to(to_name);
@@ -164,4 +164,16 @@ inline bool rename(const std::wstring& from_name, const std::wstring& to_name)
 	}
 
 	return false;
+}
+
+bool myshell::command::now()
+{
+	time_t timer = time(nullptr);
+
+	wchar_t* now;
+	const char* now_c = ctime(&timer);
+	mbstowcs(now, now_c, strlen(now_c) + 1);
+
+	wcout << now << L'\n';
+	return true;
 }
