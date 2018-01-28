@@ -80,7 +80,7 @@ bool myshell::command::tview(const wstring& filename)
 
 	wstring line;
 	for(unsigned int i = 1 ; getline(ifs, line) ; i++)
-		cout << i << L":\t" << line << L'\n';
+		wcout << i << L":\t" << line << L'\n';
 
 	return true;
 }

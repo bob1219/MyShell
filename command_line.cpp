@@ -21,6 +21,6 @@ void myshell::command_line()
 		else
 			wcerr << L"failed.\n";
 
-		cout << L'\n';
+		wcout << L'\n';
 	}
 }
