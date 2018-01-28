@@ -4,7 +4,6 @@
 #include <fstream>
 #include <cstdio>
 #include <cwctype>
-#include <cstddef>
 #include <cstdlib>
 #include <iomanip>
 #include <cstring>
