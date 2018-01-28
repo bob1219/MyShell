@@ -10,17 +10,17 @@ using namespace std;
 
 void myshell::command_line()
 {
-	string command;
+	wstring command;
 	while(true)
 	{
-		cout << ">";
-		getline(cin, command);
+		wcout << L'>';
+		getline(wcin, command);
 
 		if(command_process(command))
-			cout << "succeeded.\n";
+			wcout << L"succeeded.\n";
 		else
-			cerr << "failed.\n";
+			wcerr << L"failed.\n";
 
-		cout << "\n";
+		wcout << L'\n';
 	}
 }
