@@ -3,6 +3,9 @@
 #include <vector>
 #include <string>
 #include <exception>
+#include <locale>
+#include <cstdlib>
+#include <cstring>
 
 // Boost
 #include <boost/system/system_error.hpp>
@@ -16,58 +19,70 @@
 using namespace myshell;
 using namespace std;
 
-int main(int argc, char** argv)
+int wmain(int argc, wchar_t** argv)
 {
 	try
 	{
-		vector<string> args;
+		wwcout.imbue(locale(""));
+		wwcerr.imbue(locale(""));
+		wcin.imbue(locale(""));
+
+		vector<wstring> args;
 		for(unsigned int i = 0 ; i < argc ; i++)
 			args.push_back(argv[i]);
 
 		if(argc == 1)
 		{
 			print_version();
-			cout << '\n';
+			wcout << L'\n';
 			command_line();
 		}
 		else if(argc == 2)
 		{
 			if(script(args[1]))
 			{
-				cout << "succeeded run script.\n";
+				wcout << L"succeeded run script.\n";
 				return exit_code::SUCCESS;
 			}
 			else
 			{
-				cerr << "failed run script.\n";
+				wcerr << L"failed run script.\n";
 				return exit_code::SCRIPT_FAILURE;
 			}
 		}
 		else
 		{
-			cerr	<< "usage:\n"
-				<< '"' << args[0] << '"' << '\n'
-				<< "or\n"
-				<< '"' << args[0] << " [script-filename]\n";
+			wcerr	<< L"usage:\n"
+				<< L'"' << args[0] << L'"' << L'\n'
+				<< L"or\n"
+				<< L'"' << args[0] << L" [script-filename]\n";
 			return exit_code::MANY_ARGS;
 		}
 	}
 	catch(boost::system::system_error& e)
 	{
-		cerr << "boost exception was occured.\n";
-		cerr << "error code:\t" << e.code().value() << '\n';
-		cerr << "error message:\t" << e.what() << '\n';
+		wchar_t* mess;
+		const char* mess_c = e.what();
+		mbstowcs(mess, mess_c, strlen(mess_c) + 1);
+
+		wcerr << L"boost exception was occured.\n";
+		wcerr << L"error code:\t" << e.code().value() << L'\n';
+		wcerr << L"error message:\t" << mess << L'\n';
 		return exit_code::BOOST_EXCEPTION;
 	}
 	catch(std::exception& e)
 	{
-		cerr << "standard c++ library exception was occured.\n";
-		cerr << "error message: " << e.what() << '\n';
+		wchar_t* mess;
+		const char* mess_c = e.what();
+		mbstowcs(mess, mess_c, strlen(mess_c) + 1);
+
+		wcerr << L"standard c++ library exception was occured.\n";
+		wcerr << L"error message: " << mess << L'\n';
 		return exit_code::STD_EXCEPTION;
 	}
 	catch(...)
 	{
-		cerr << "error.\n";
+		wcerr << L"error.\n";
 		return exit_code::EXCEPTION;
 	}
 }

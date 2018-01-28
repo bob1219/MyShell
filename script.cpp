@@ -2,6 +2,7 @@
 #include <string>
 #include <iostream>
 #include <fstream>
+#include <locale>
 
 // Header
 #include "function.h"
@@ -9,19 +10,21 @@
 // using
 using namespace std;
 
-bool myshell::script(const string& filename)
+bool myshell::script(const wstring& filename)
 {
-	ifstream ifs(filename);
+	wifstream ifs;
+	ifs.imbue(locale(""));
+	ifs.open(filename);
 	if(ifs.fail())
 		return false;
 
-	string line;
+	wstring line;
 	for(unsigned int i = 1 ; getline(ifs, line) ; i++)
 	{
 		if(command_process(line))
-			cout << "succeeded(line " << i << ")\n";
+			wcout << L"succeeded(line " << i << L")\n";
 		else
-			cerr << "failed(line " << i << ")\n";
+			wcerr << L"failed(line " << i << L")\n";
 	}
 
 	return true;
