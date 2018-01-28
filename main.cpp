@@ -23,8 +23,8 @@ int wmain(int argc, wchar_t** argv)
 {
 	try
 	{
-		wwcout.imbue(locale(""));
-		wwcerr.imbue(locale(""));
+		wcout.imbue(locale(""));
+		wcerr.imbue(locale(""));
 		wcin.imbue(locale(""));
 
 		vector<wstring> args;
