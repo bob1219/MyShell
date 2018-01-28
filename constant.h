@@ -9,7 +9,7 @@ namespace myshell
 {
 	namespace
 	{
-		const std::wstring VERSION	= L"1.0";
+		const std::wstring VERSION	= L"2.0";
 		const std::size_t FILE_SIZE_MAX	= 102400;
 	}
 

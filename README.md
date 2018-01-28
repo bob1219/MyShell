@@ -103,3 +103,6 @@ History
 -------
 * 1.0 (January 27th, 2018)
 	* First version
+
+* 2.0 (January 28th, 2018)
+	* Support wide character

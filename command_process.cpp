@@ -13,7 +13,7 @@ using namespace std;
 
 bool myshell::command_process(const wstring& command)
 {
-	if(regex_match(command, regex(L"mk \\S+"))) // Make a file
+	if(regex_match(command, wregex(L"mk \\S+"))) // Make a file
 	{
 		wistringstream iss(command);
 		iss.ignore(3);
@@ -23,7 +23,7 @@ bool myshell::command_process(const wstring& command)
 
 		return command::mk(filename);
 	}
-	else if(regex_match(command, regex(L"rm \\S+"))) // Remove a file
+	else if(regex_match(command, wregex(L"rm \\S+"))) // Remove a file
 	{
 		wistringstream iss(command);
 		iss.ignore(3);
@@ -33,7 +33,7 @@ bool myshell::command_process(const wstring& command)
 
 		return command::rm(filename);
 	}
-	else if(regex_match(command, regex(L"copy \\S+ \\S+"))) // Copy file
+	else if(regex_match(command, wregex(L"copy \\S+ \\S+"))) // Copy file
 	{
 		wistringstream iss(command);
 		iss.ignore(5);
@@ -44,7 +44,7 @@ bool myshell::command_process(const wstring& command)
 
 		return command::copy(from_filename, to_filename);
 	}
-	else if(regex_match(command, regex(L"lfile \\S+"))) // Print list of files
+	else if(regex_match(command, wregex(L"lfile \\S+"))) // Print list of files
 	{
 		wistringstream iss(command);
 		iss.ignore(6);
@@ -54,7 +54,7 @@ bool myshell::command_process(const wstring& command)
 
 		return command::lfile(dir_name);
 	}
-	else if(regex_match(command, regex(L"mkdir \\S+"))) // Make a directory
+	else if(regex_match(command, wregex(L"mkdir \\S+"))) // Make a directory
 	{
 		wistringstream iss(command);
 		iss.ignore(6);
@@ -64,7 +64,7 @@ bool myshell::command_process(const wstring& command)
 
 		return command::mkdir(dir_name);
 	}
-	else if(regex_match(command, regex(L"rmdir \\S+"))) // Remove a directory
+	else if(regex_match(command, wregex(L"rmdir \\S+"))) // Remove a directory
 	{
 		wistringstream iss(command);
 		iss.ignore(6);
@@ -76,7 +76,7 @@ bool myshell::command_process(const wstring& command)
 	}
 	else if(command == L"pcwd") // Print current working directory
 		return command::pcwd();
-	else if(regex_match(command, regex(L"chcwd \\S+"))) // Change current working directory
+	else if(regex_match(command, wregex(L"chcwd \\S+"))) // Change current working directory
 	{
 		wistringstream iss(command);
 		iss.ignore(6);
@@ -86,7 +86,7 @@ bool myshell::command_process(const wstring& command)
 
 		return command::chcwd(dir_name);
 	}
-	else if(regex_match(command, regex(L"rename \\S+ \\S+"))) // Rename a directory or a file
+	else if(regex_match(command, wregex(L"rename \\S+ \\S+"))) // Rename a directory or a file
 	{
 		wistringstream iss(command);
 		iss.ignore(7);
@@ -97,7 +97,7 @@ bool myshell::command_process(const wstring& command)
 
 		return command::rename(from_name, to_name);
 	}
-	else if(regex_match(command, regex(L"tview \\S+"))) // View text contents of a file
+	else if(regex_match(command, wregex(L"tview \\S+"))) // View text contents of a file
 	{
 		wistringstream iss(command);
 		iss.ignore(6);
@@ -107,7 +107,7 @@ bool myshell::command_process(const wstring& command)
 
 		return command::tview(filename);
 	}
-	else if(regex_match(command, regex(L"bview \\S+"))) // View binary contents of a file
+	else if(regex_match(command, wregex(L"bview \\S+"))) // View binary contents of a file
 	{
 		wistringstream iss(command);
 		iss.ignore(6);
@@ -119,7 +119,7 @@ bool myshell::command_process(const wstring& command)
 	}
 	else if(command == L"version") // Print current version
 		return command::version();
-	else if(regex_match(command, regex(L"app .+"))) // Execution a application
+	else if(regex_match(command, wregex(L"app .+"))) // Execution a application
 	{
 		wstring app_name = command.substr(4);
 		return command::app(app_name);
@@ -128,7 +128,7 @@ bool myshell::command_process(const wstring& command)
 		return command::now();
 	else if(command == L"pause") // Pause
 		return command::pause();
-	else if(regex_match(command, regex(L"script \\S+"))) // Execution a script
+	else if(regex_match(command, wregex(L"script \\S+"))) // Execution a script
 	{
 		wistringstream iss(command);
 		iss.ignore(7);

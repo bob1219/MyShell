@@ -19,7 +19,7 @@ namespace myshell
 {
 	void command_line();
 	bool script(const std::wstring& filename);
-	bool command_process(const wstd::string& command);
+	bool command_process(const std::wstring& command);
 
 	inline void print_version()
 	{
@@ -34,7 +34,9 @@ namespace myshell
 		bool tview(const std::wstring& filename);
 		bool bview(const std::wstring& filename);
 		bool app(const std::wstring& app_name);
-		bool rm(const std::string& filename);
+		bool rm(const std::wstring& filename);
+		bool now();
+		bool rename(const std::wstring& from_name, const std::wstring& to_name);
 
 		inline bool mkdir(const std::wstring& dir_name)
 		{
@@ -67,13 +69,6 @@ namespace myshell
 		inline bool version()
 		{
 			std::wcerr << L"MyShell version " << VERSION << L'\n';
-			return true;
-		}
-
-		inline bool now()
-		{
-			std::time_t timer = std::time(nullptr);
-			std::wcout << std::_wctime(&timer) << L'\n';
 			return true;
 		}
 
