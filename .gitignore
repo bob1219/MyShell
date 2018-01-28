@@ -1,4 +1,5 @@
 *.txt
 makefile
 *.cmd
-*.o
+*.obj
+*.lib
